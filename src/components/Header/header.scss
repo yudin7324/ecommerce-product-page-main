@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+  padding: 28px 0 32px 0;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: var(--spacing-700);
+  }
+}

@@ -1,9 +1,6 @@
-# Password Generator App
+# Frontend Mentor - E-commerce product page
 
-![Design preview for the Password generator app coding challenge](./preview.jpg)
-
-## Overview
-This is a password generator application built with React as part of a **Frontend Mentor** challenge. The app allows users to generate secure passwords based on selected criteria and copy them to the clipboard.
+![Design preview for the E-commerce product page coding challenge](./design/desktop-preview.jpg)
 
 ## Features
 - Responsive Design – The layout adapts to different screen sizes for an optimal viewing experience.

@@ -1,0 +1,14 @@
+.navigation {
+
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-400);
+    list-style: none;
+  }
+
+  &__link {
+    color: var(--color-grey-500);
+  }
+}
