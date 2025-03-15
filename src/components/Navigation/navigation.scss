@@ -9,6 +9,26 @@
   }
 
   &__link {
+    position: relative;
     color: var(--color-grey-500);
+
+    &:hover {
+      color: var(--color-grey-950);
+
+      &:after {
+        background-color: var(--color-orange-500)
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -48px;
+      width: 100%;
+      height: 4px;
+      transition: background-color 0.3s ease-in-out;
+      background-color: transparent;
+    }
   }
 }
