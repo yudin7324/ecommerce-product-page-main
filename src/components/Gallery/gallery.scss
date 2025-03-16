@@ -1,0 +1,122 @@
+.gallery {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: -24px;
+  margin-right: -24px;
+
+  @media (min-width: 600px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__image {
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 600px) {
+      border-radius: 15px;
+    }
+
+    &:before {
+      display: block;
+      content: "";
+      padding-top: 80%;
+      
+      @media (min-width: 600px) {
+        padding-top: 47.69%;
+      }
+
+      @media (min-width: 1280px) {
+        padding-top: 99.10%;
+      }
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+    }
+  }
+
+  &__thumbnails {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-400);
+    margin-top: 30px;
+
+    @media (min-width: 1280px) {
+      display: flex;
+    }
+
+    &-item {
+      position: relative;
+      height: 88px;
+      width: 88px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover {
+
+        &:after {
+          background: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.active {
+        border: 2px solid var(--color-orange-500);
+
+        &:after {
+          background-color: rgba(255, 255, 255, 0.75);
+        }
+      }
+    }
+  }
+
+  &__navigation {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: 600px) {
+      left: 12.5px;
+      right: 12.5px;
+    }
+
+    @media (min-width: 1280px) {
+      display: none;
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: var(--color-white);
+    }
+  }
+}
