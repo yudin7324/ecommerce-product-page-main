@@ -1,23 +1,35 @@
 .header {
   width: 100%;
+  -webkit-tap-highlight-color: transparent;
 
   &__wrap {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: var(--spacing-700);
-    padding: 28px 0 32px 0;
-    border-bottom: 1px solid var(--color-grey-100);
+    gap: var(--spacing-200);
+    padding: 19px 0 24px 0;
+  
+    @media (min-width: 600px) {
+      padding: 28px 0 32px 0;
+      border-bottom: 1px solid var(--color-grey-100);
+    }
+
+    @media (min-width: 1280px) {
+      gap: var(--spacing-700);
+    }
   }
 
   &__cart {
     display: flex;
     align-items: center;
-    gap: var(--spacing-600);
+    gap: var(--spacing-300);
     margin-left: auto;
 
-    &-btn {
+    @media (min-width: 600px) {
+      gap: var(--spacing-600);
+    }
 
+    &-btn {
       &:hover {
         svg {
           fill: var(--color-grey-950)
@@ -32,15 +44,33 @@
   }
 
   &__avatar {
-    height: 50px;
-    width: 50px;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
     overflow: hidden;
+
+    @media (min-width: 600px) {
+      height: 50px;
+      width: 50px;
+    }
 
     img {
       object-fit: cover;
       height: 100%;
       width: 100%;
+    }
+  }
+
+  &__menu {
+    display: block;
+    padding-top: 8px;
+    
+    @media (min-width: 600px) {
+      padding-top: 6px;
+    }
+
+    @media (min-width: 1280px) {
+      display: none;
     }
   }
 }
