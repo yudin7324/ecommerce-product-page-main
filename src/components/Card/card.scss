@@ -1,13 +1,12 @@
 .card {
-
-
   @media (min-width: 1280px) {
     margin: 96px 44.5px 0 44.5px;
   }
 
   &__wrap {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    // grid-template-columns: 1fr;
     gap: var(--spacing-300);
     align-items: center;
 
@@ -16,7 +15,8 @@
     }
 
     @media (min-width: 1280px) {
-      grid-template-columns: repeat(2, 1fr);
+      flex-direction: row;
+      // grid-template-columns: 448px 1fr;
       gap: var(--spacing-1600);
     }
   }
@@ -94,5 +94,17 @@
     &:hover {
       background: var(--color-orange-300);
     }
+  }
+
+  &__gallery {
+    max-width: 100%;
+
+    @media (min-width: 1280px) {
+      max-width: 448px;
+    }
+  }
+
+  &__content {
+    // width: 50%;
   }
 }
