@@ -1,13 +1,10 @@
-import { FC } from 'react'
-import { useState } from 'react'
-import './gallery.scss'
-
-
+import { FC, useState, useRef } from 'react';
+import './gallery.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import IconPrev from '@/components/icons/IconPrev';
-// import IconNext from '@/components/icons/IconNext';
+import { Swiper as SwiperType } from 'swiper';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-
+import IconPrev from '@/components/icons/IconPrev';
+import IconNext from '@/components/icons/IconNext';
 
 interface Image {
   full: string;
@@ -18,99 +15,69 @@ interface GalleryProps {
   images: Image[];
 }
 
-const Gallery:FC<GalleryProps> = ({ images }) => {
-  // const [selectedIndex, setSelectedIndex] = useState(0);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-  console.log(images);
-  // function handleClickNext() {
-  //   setSelectedIndex((prevIndex) => (prevIndex + 1) % images.length);
-  // }
-
-  // function handleClickPrev() {
-  //   setSelectedIndex((prevIndex) => 
-  //     prevIndex === 0 ? images.length - 1 : prevIndex - 1
-  //   );
-  // }
+const Gallery: FC<GalleryProps> = ({ images }) => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
 
   return (
     <div className="gallery">
-      {/* <div className="gallery__image">
-        <img src={images[selectedIndex].full} alt="selected image" />
-      </div> */}
-      {/* <div className="gallery__thumbnails">
-        {images.map((img, index) => (
-          <div 
-            className={`gallery__thumbnails-item ${selectedIndex === index && "active"}`}
-            key={index}
-            onClick={() => setSelectedIndex(index)}
-          >
-            <img src={img.thumb} alt={`Thumbnail ${index + 1}`}/>
-          </div>
-        ))}
-      </div>
       <div className='gallery__navigation'>
-        <div className='gallery__navigation-btn' onClick={handleClickPrev}>
+        <button ref={prevRef} className="gallery__prev">
           <IconPrev />
-        </div>
-        <div className='gallery__navigation-btn' onClick={handleClickNext}>
+        </button>
+        <button ref={nextRef} className="gallery__next">
           <IconNext />
-        </div>
-      </div> */}
-
+        </button>
+      </div>
       <Swiper
         slidesPerView={1}
-        spaceBetween={10}
-        navigation={true}
+        grabCursor={true}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[Navigation, Thumbs]}
         className="gallery__slider-main"
+        loop={true}
+        onBeforeInit={(swiper) => {
+          if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }}
       >
-        <SwiperSlide>
-          <div className='gallery__image'>
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className="gallery__slider-main-image responsive-media">
+              <img src={image.full} alt={`Slide ${index + 1}`} />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
+
       <Swiper
         onSwiper={setThumbsSwiper}
-        spaceBetween={10}
+        spaceBetween={32}
         slidesPerView={4}
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className="gallery__slider-thumbs"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className="gallery__slider-thumbs-item responsive-media">
+              <img src={image.thumb} alt={`Thumbnail ${index + 1}`} />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
-}
+};
 
-export default Gallery
+export default Gallery;
