@@ -1,24 +1,21 @@
 .gallery {
   position: relative;
   -webkit-tap-highlight-color: transparent;
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
 
+  @media (min-width: 600px) {
+    width: 100%;
+  }
 
   &__slider {
-
     &-main {
-
       width: 100%;
       overflow: hidden;
-      border-radius: 15px;
-      // width: 100%;
-      // margin-left: -24px;
-      // margin-right: -24px;
 
-      // @media (min-width: 600px) {
-      //   margin-left: 0;
-      //   margin-right: 0;
-      // }
+      @media (min-width: 600px) {
+        border-radius: 15px;
+      }
 
       &-image {
         &.responsive-media {
@@ -35,20 +32,13 @@
           }
         }
       }
-
-      .swiper-button-prev,
-      .swiper-button-next {
-
-        &:after {
-          content: none;
-        }
-      }
     }
 
     &-thumbs {
       margin-top: var(--spacing-400);
       display: none;
       width: 100%;
+      overflow: hidden;
 
       @media (min-width: 1280px) {
         display: block;
@@ -97,32 +87,16 @@
     }
   }
 
-  &__image {
-    // position: relative;
-    // overflow: hidden;
-
-    // @media (min-width: 600px) {
-    //   border-radius: 15px;
-    // }
-
-    // &:before {
-    //   display: block;
-    //   content: "";
-    //   padding-top: 80%;
-      
-    //   @media (min-width: 600px) {
-    //     padding-top: 47.69%;
-    //   }
-
-    //   @media (min-width: 1280px) {
-    //     padding-top: 99.10%;
-    //   }
-    // }
-
-    
+  &__prev, &__next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    pointer-events: all;
   }
-
-
 
   &__navigation {
     position: absolute;
@@ -132,6 +106,8 @@
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
+    z-index: 2;
+    pointer-events: none;
 
     @media (min-width: 600px) {
       left: 12.5px;
@@ -141,20 +117,5 @@
     @media (min-width: 1280px) {
       display: none;
     }
-
-    &-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      background-color: var(--color-white);
-    }
   }
-}
-
-.swiper {
-  // width: 100%;
-  // max-width: 400px;
 }

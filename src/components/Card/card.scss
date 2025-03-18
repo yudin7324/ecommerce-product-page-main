@@ -1,6 +1,16 @@
 .card {
+  padding-bottom: var(--spacing-900);
+
+  @media (min-width: 600px) {
+    padding-top: var(--spacing-600);
+    padding-bottom: var(--spacing-700);
+  }
+
   @media (min-width: 1280px) {
-    margin: 96px 44.5px 0 44.5px;
+    padding-top: var(--spacing-1200);
+    padding-bottom: var(--spacing-1600);
+    padding-left: 44.5px;
+    padding-right: 44.5px;
   }
 
   &__wrap {
@@ -16,7 +26,6 @@
 
     @media (min-width: 1280px) {
       display: grid;
-      // flex-direction: row;
       grid-template-columns: repeat(2, 1fr);
       gap: var(--spacing-1600);
     }
@@ -24,21 +33,30 @@
 
   &__subtitle {
     font-weight: 700;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.2;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--color-grey-500);
-    margin-bottom: 24px;
+    margin-bottom: var(--spacing-200);
+
+    @media (min-width: 600px) {
+      font-size: 13px;
+      margin-bottom: var(--spacing-300);
+    }
   }
 
   &__title {
-    margin-bottom: 32px;
+    margin-bottom: var(--spacing-200);
+
+    @media (min-width: 600px) {
+      margin-bottom: var(--spacing-400);
+    }
   }
 
   &__text {
     color: var(--color-grey-500);
-    margin-bottom: 32px;
+    margin-bottom: var(--spacing-400);
   }
 
   &__price {
@@ -95,17 +113,5 @@
     &:hover {
       background: var(--color-orange-300);
     }
-  }
-
-  &__gallery {
-    max-width: 443px;
-
-    @media (min-width: 1280px) {
-      
-    }
-  }
-
-  &__content {
-    // width: 50%;
   }
 }

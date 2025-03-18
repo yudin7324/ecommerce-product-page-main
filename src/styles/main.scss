@@ -43,16 +43,19 @@ html {
 body {
   color: var(--color-grey-950);
   background: var(--color-white);
-  min-width: 320px;
   min-height: 100vh;
   font-family: "Kumbh Sans", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media (min-width: 600px) {
+    font-size: 16px;
+  }
 }
 
 a {
@@ -130,9 +133,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .text-preset-1 {
-  font-size: 44px;
+  font-size: 28px;
   line-height: 1.1;
   font-weight: 700;
+
+  @media (min-width: 600px) {
+    font-size: 44px;
+  }
 }
 
 .text-preset-2 {

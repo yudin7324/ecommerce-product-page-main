@@ -13,9 +13,7 @@ const Card = () => {
   return (
     <section className='card'>
       <div className='card__wrap'>
-        <div className='card__gallery'>
-          <Gallery images={images} />
-        </div>
+        <Gallery images={images} />
         <div className='card__content'>
           <h2 className='card__subtitle'>Sneaker Company</h2>
           <h1 className='card__title text-preset-1'>Fall Limited Edition Sneakers</h1>
