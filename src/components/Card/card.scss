@@ -83,15 +83,27 @@
       line-height: 1.6;
       text-decoration: line-through;
       color: var(--color-grey-500);
-      margin-top: 8px;
+      margin-top: var(--spacing-100);
     }
   }
 
   &__btns {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: var(--spacing-200);
-    margin-top: 32px;
+    margin-top: var(--spacing-400);
+    
+    @media (min-width: 600px) {
+      gap: var(--spacing-100);
+      margin-top: var(--spacing-300);
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    @media (min-width: 1280px) {
+      margin-top: var(--spacing-400);
+      gap: var(--spacing-200);
+    }
   }
 
   &__btn {

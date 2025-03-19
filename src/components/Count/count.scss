@@ -1,0 +1,43 @@
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 8px;
+  border-radius: 10px;
+  height: 56px;
+  width: 100%;
+  background: var(--color-grey-50);
+  -webkit-tap-highlight-color: transparent;
+
+  @media (min-width: 1280px) {
+    min-width: 157px;
+    width: auto;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 19px;
+    height: 19px;
+
+    &:hover {
+      svg {
+        fill: var(--color-orange-300);
+      }
+    }
+
+    svg {
+      fill: var(--color-orange-500);
+      transition: fill 0.3s ease-in-out;
+    }
+
+  }
+
+  &__num {
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--color-grey-950);
+  }
+}

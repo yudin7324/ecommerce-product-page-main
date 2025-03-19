@@ -1,4 +1,6 @@
+import { FC } from 'react'
 import './card.scss'
+import Count from '@/components/Count/Count'
 import IconCart from '@/components/icons/IconCart'
 import Gallery from '@/components/Gallery/Gallery'
 
@@ -9,7 +11,7 @@ const images = [
   { full: "src/assets/image-product-4.jpg", thumb: "src/assets/image-product-4-thumbnail.jpg" },
 ];
 
-const Card = () => {
+const Card: FC = () => {
   return (
     <section className='card'>
       <div className='card__wrap'>
@@ -28,6 +30,8 @@ const Card = () => {
           </div>
 
           <div className='card__btns'>
+            <Count />
+
             <button 
               className='card__btn'
               type='button'
