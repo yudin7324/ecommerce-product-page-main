@@ -96,6 +96,17 @@
     border-radius: 50%;
     background-color: var(--color-white);
     pointer-events: all;
+
+    &:hover {
+      svg {
+        stroke: var(--color-orange-500);
+      }
+    }
+
+    svg {
+      stroke: var(--color-black);
+      transition: stroke 0.3s ease-in-out;
+    }
   }
 
   &__navigation {
