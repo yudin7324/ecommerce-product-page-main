@@ -3,8 +3,9 @@ import './header.scss'
 import logo from '@/assets/logo.svg'
 import avatar from '@/assets/avatar.png'
 import Navigation from '@/components/Navigation/Navigation'
-import IconCart from '@/components/icons/IconCart'
+
 import IconMenu from '@/components/icons/IconMenu'
+import Cart from '@/components/Cart/Cart'
 
 const Header:FC = () => {
 
@@ -36,13 +37,7 @@ const Header:FC = () => {
           <Navigation activeMenu={isShowMenu} handleToggleMenu={toggleMenu}/>
 
           <div className='header__cart'>
-            <button 
-              className='header__cart-btn' 
-              type='button' 
-              aria-label='cart button'
-            >
-               <IconCart />
-            </button>
+            <Cart />
 
             <figure className='header__avatar'>
               <img src={avatar} alt="avatar" />

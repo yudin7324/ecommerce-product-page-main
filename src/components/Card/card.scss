@@ -60,6 +60,12 @@
   }
 
   &__price {
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: 600px) {
+      flex-direction: column;
+    }
 
     &-new {
       display: flex;
@@ -83,7 +89,10 @@
       line-height: 1.6;
       text-decoration: line-through;
       color: var(--color-grey-500);
-      margin-top: var(--spacing-100);
+
+      @media (min-width: 600px) {
+        margin-top: var(--spacing-100);
+      }
     }
   }
 
