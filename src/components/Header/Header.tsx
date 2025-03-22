@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import './header.scss'
-import logo from '@/assets/logo.svg'
-import avatar from '@/assets/avatar.png'
+import logo from '@/images/logo.svg'
+import avatar from '@/images/avatar.png'
 import Navigation from '@/components/Navigation/Navigation'
 
 import IconMenu from '@/components/icons/IconMenu'

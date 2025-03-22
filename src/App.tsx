@@ -3,10 +3,10 @@ import Header from '@/components/Header/Header';
 import Card from '@/components/Card/Card';
 
 const images = [
-  { full: "src/assets/image-product-1.jpg", thumb: "src/assets/image-product-1-thumbnail.jpg" },
-  { full: "src/assets/image-product-2.jpg", thumb: "src/assets/image-product-2-thumbnail.jpg" },
-  { full: "src/assets/image-product-3.jpg", thumb: "src/assets/image-product-3-thumbnail.jpg" },
-  { full: "src/assets/image-product-4.jpg", thumb: "src/assets/image-product-4-thumbnail.jpg" },
+  { full: "/images/image-product-1.jpg", thumb: "/images/image-product-1-thumbnail.jpg" },
+  { full: "/images/image-product-2.jpg", thumb: "/images/image-product-2-thumbnail.jpg" },
+  { full: "/images/image-product-3.jpg", thumb: "/images/image-product-3-thumbnail.jpg" },
+  { full: "/images/image-product-4.jpg", thumb: "/images/image-product-4-thumbnail.jpg" },
 ];
 
 const cardData = {
