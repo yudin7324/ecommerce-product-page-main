@@ -33,7 +33,7 @@ const Card: FC = () => {
             <Count />
 
             <button 
-              className='card__btn'
+              className='card__btn btn'
               type='button'
               aria-label='add to cart button'
             >

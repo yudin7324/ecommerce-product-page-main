@@ -114,25 +114,4 @@
       gap: var(--spacing-200);
     }
   }
-
-  &__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-200);
-    padding: 0 15px;
-    border-radius: 10px;
-    width: 100%;
-    height: 56px;
-    font-weight: 700;
-    line-height: 1.6;
-    color: var(--color-grey-950);
-    box-shadow: 0 20px 50px -20px rgba(255, 126, 27, 0.25);
-    background: var(--color-orange-500);
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      background: var(--color-orange-300);
-    }
-  }
 }

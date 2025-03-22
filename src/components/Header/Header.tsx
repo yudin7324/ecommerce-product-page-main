@@ -8,8 +8,7 @@ import IconMenu from '@/components/icons/IconMenu'
 import Cart from '@/components/Cart/Cart'
 
 const Header:FC = () => {
-
-  const [isShowMenu, setIsShowMenu] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
 
   function toggleMenu() {
     setIsShowMenu((prev) => !prev)
@@ -37,7 +36,7 @@ const Header:FC = () => {
           <Navigation activeMenu={isShowMenu} handleToggleMenu={toggleMenu}/>
 
           <div className='header__cart'>
-            <Cart />
+            <Cart/>
 
             <figure className='header__avatar'>
               <img src={avatar} alt="avatar" />
