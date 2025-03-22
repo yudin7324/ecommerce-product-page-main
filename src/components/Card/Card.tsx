@@ -1,43 +1,98 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import './card.scss'
 import Count from '@/components/Count/Count'
 import IconCart from '@/components/icons/IconCart'
 import Gallery from '@/components/Gallery/Gallery'
 
-const images = [
-  { full: "src/assets/image-product-1.jpg", thumb: "src/assets/image-product-1-thumbnail.jpg" },
-  { full: "src/assets/image-product-2.jpg", thumb: "src/assets/image-product-2-thumbnail.jpg" },
-  { full: "src/assets/image-product-3.jpg", thumb: "src/assets/image-product-3-thumbnail.jpg" },
-  { full: "src/assets/image-product-4.jpg", thumb: "src/assets/image-product-4-thumbnail.jpg" },
-];
+interface Image {
+  full: string
+  thumb: string
+}
 
-const Card: FC = () => {
+interface CardProps {
+  id: string;
+  title: string
+  subtitle: string
+  text: string
+  price: string
+  oldPrice: string
+  sale: string
+  images: Image[]
+}
+
+interface CartItem {
+  id: string;
+  title: string
+  price: string
+  totalPrice: string
+  image: string
+  quantity: number
+}
+
+const Card: FC<CardProps> = ({
+  id,
+  title,
+  subtitle,
+  text,
+  price,
+  oldPrice,
+  sale,
+  images,
+}) => {
+  const [count, setCount] = useState<number>(1)
+
+  function formatPrice(value: number): string {
+    return `$${value.toFixed(2)}`
+  }
+
+  function addToCart() {
+    const cart: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]')
+
+    const existingItem = cart.find(item => item.title === title)
+
+    if (existingItem) {
+      existingItem.quantity += count
+      existingItem.totalPrice = formatPrice(existingItem.quantity * parseFloat(price))
+    } else {
+      cart.push({
+        id,
+        title,
+        price: formatPrice(parseFloat(price)),
+        totalPrice: formatPrice(count * parseFloat(price)),
+        image: images[0].thumb,
+        quantity: count,
+      })
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart))
+    window.dispatchEvent(new Event('cartUpdated'))
+  }
+
   return (
     <section className='card'>
       <div className='card__wrap'>
         <Gallery images={images} />
         <div className='card__content'>
-          <h2 className='card__subtitle'>Sneaker Company</h2>
-          <h1 className='card__title text-preset-1'>Fall Limited Edition Sneakers</h1>
-          <p className='card__text text-preset-3'>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          <h2 className='card__subtitle'>{subtitle}</h2>
+          <h1 className='card__title text-preset-1'>{title}</h1>
+          <p className='card__text text-preset-3'>{text}</p>
 
           <div className='card__price'>
             <div className='card__price-new'>
-              <span className='text-preset-2'>$125.00</span>
-              <span className='card__price-sale'>50%</span>
+              <span className='text-preset-2'>${price}</span>
+              <span className='card__price-sale'>{sale}</span>
             </div>
-            <div className='card__price-old'>$250.00</div>
+            <div className='card__price-old'>${oldPrice}</div>
           </div>
 
           <div className='card__btns'>
-            <Count />
-
+            <Count count={count} setCount={setCount} />
             <button 
               className='card__btn btn'
               type='button'
-              aria-label='add to cart button'
+              onClick={addToCart}
             >
-              <IconCart/>
+              <IconCart />
               Add to cart
             </button>
           </div>

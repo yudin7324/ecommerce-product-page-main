@@ -1,18 +1,21 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import './count.scss'
 import IconMinus from '@/components/icons/IconMinus'
 import IconPlus from '@/components/icons/IconPlus'
 
-const Count: FC = () => {
-  const [count, setCount] = useState<number>(0);
+interface CountProps {
+  count: number
+  setCount: (value: number) => void
+}
 
-  function handelIncrease() {
-    setCount((prev) => prev + 1)
+const Count: FC<CountProps> = ({ count, setCount }) => {
+  function handleIncrease() {
+    setCount(count + 1)
   }
 
   function handleDecrease() {
-    if(count > 0) {
-      setCount((prev) => prev - 1)
+    if (count > 1) {
+      setCount(count - 1)
     }
   }
 
@@ -31,7 +34,7 @@ const Count: FC = () => {
         className='count__btn' 
         type='button' 
         aria-label='increase button'
-        onClick={handelIncrease}
+        onClick={handleIncrease}
       >
         <IconPlus />
       </button>
