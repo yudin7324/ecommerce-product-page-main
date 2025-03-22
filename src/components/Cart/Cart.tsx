@@ -69,7 +69,12 @@ const Cart: FC = () => {
 
   return (
     <div className='cart' ref={cartRef}>
-      <button className='header__cart-btn' type='button' onClick={toggleCart}>
+      <button 
+        className='cart__btn' 
+        type='button' 
+        onClick={toggleCart}
+        aria-label='cart button'
+      >
         <IconCart />
       </button>
       {count > 0 && <div className='cart__count'>{count}</div>}

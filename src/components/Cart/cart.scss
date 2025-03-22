@@ -2,6 +2,22 @@
   position: relative;
   height: 20px;
 
+  &__btn {
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      svg {
+        fill: var(--color-grey-950)
+      }
+    }
+
+    svg {
+      fill: var(--color-grey-500);
+      transition: fill 0.3s ease-in-out;
+    }
+  }
+
   &__count {
     position: absolute;
     right: -40%;
