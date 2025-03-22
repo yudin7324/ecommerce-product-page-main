@@ -39,6 +39,7 @@ const Lightbox: FC<LightboxProps> = ({ images, currentIndex, onClose }) => {
             initialSlide={currentIndex}
             thumbs={{ swiper: thumbsSwiper }}
             modules={[Navigation, Thumbs]}
+            loop={true}
             onBeforeInit={(swiper) => {
               if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
                 swiper.params.navigation.prevEl = prevRef.current
@@ -63,6 +64,7 @@ const Lightbox: FC<LightboxProps> = ({ images, currentIndex, onClose }) => {
           navigation
           modules={[Navigation, Thumbs]}
           className="lightbox__thumbs"
+          loop={true}
         >
           {images.map((image, idx) => (
             <SwiperSlide key={idx}>
