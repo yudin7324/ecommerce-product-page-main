@@ -106,7 +106,7 @@ const Cart: FC = () => {
                   </li>
                 ))}
               </ul>
-              <button className='cart__btn btn' type='button'>
+              <button className='btn' type='button'>
                 Checkout
               </button>
             </div>
